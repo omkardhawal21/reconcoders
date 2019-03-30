@@ -3,6 +3,9 @@ from django.shortcuts import render
 from .geo import foo
 from bit.forms import Loginform
 from bit.models import Doctor, Disease, Patient
+from .dp import chart1
+from .dp import chart2
+from .dp import chart3
 
 
 def login(request):
@@ -58,3 +61,25 @@ def default_map(request):
     mapbox_access_token = 'pk.my_mapbox_access_token'
     co=foo()
     return render(request, 'default.html',{ 'mapbox_access_token': mapbox_access_token,'co':co})
+
+def home1(request):
+    chart1()
+    dis=Disease.objects.all()
+    d=[]
+    print(request.POST.get('p'))
+    for i in range(len(dis)):
+        d.append(dis[i].disease_possible)
+    z=chart1()
+    print('hello')
+    return render(request,'index1.html',{'d':d})
+
+
+def home2(request):
+	c,d=chart2()
+	return render(request,'index2.html',{'c':c,'d':d})
+
+
+def home3(request):
+	chart3()
+	return render(request,'index3.html',{})
+
