@@ -4,16 +4,19 @@
     <meta charset="UTF-8">
     <title>DoctorDash</title>
 </head>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
 <body>
-Doctor Dashboard
-{{ all_items.doctor_name }}
-<br>
-{{ all_items.doctor_address }}<br>
-{{ all_items.doctor_bdate }}<br>
-{{ all_items.qualification }}<br>
-{{ all_items.doctor_number }}<br>
-{{ all_items.doctor_gender }}<br>
-{{ all_items.doctor_username }}<br>
-{{ all_items.doctor_pass }}<br>
+<div class="card" style="width: 18rem;">
+  <div class="card-body">
+    <p id="name1" ><b>Name: {{ all_items.doctor_name }}</b></p>
+      <p id=address1><b>Address:{{ all_items.doctor_address }}</b></p>
+      <p id=pnumber1><b> Phone no.:{{ all_items.doctor_number }}</b></p>
+      <p id=qualification1><b>Qualification :{{ all_items.qualification }}</b></p>
+      <p id=gender2><b>Gender: {{ all_items.doctor_gender }}</b></p>
+      <p id=bday1><b>Birthday: {{ all_items.doctor_bdate }}</b></p>
+      <p id="username1" ><b>Username: {{ all_items.doctor_username }}</b></p>
+  </div>
+</div>
 </body>
 </html>

@@ -25,7 +25,9 @@ def login(request):
                 try:
                     pat = Patient.objects.get(patient_username=user)
                     all_items = pat
-                    return render(request, "patientdash.html", {'all_items': all_items})
+                    infop = Disease.objects.filter(patient=all_items.patient_name)
+                    print(infop)
+                    return render(request, "patientdash.html", {'all_items': all_items,'infop':infop})
                 except ObjectDoesNotExist:
                     pat = None
             #return render(request, "login.html", {'form': form})
