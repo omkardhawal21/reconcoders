@@ -16,10 +16,12 @@ def login(request):
             try:
                 all_items = Doctor.objects.get(doctor_username=user)
                 named = all_items.doctor_name
+                request.session['dname'] = named
+                info = Disease.objects.filter(doctor=named)
                 # print(info)
                 # all_items = go
 
-                return render(request, "doctordash.html", {'all_items': all_items})
+                return render(request, "doctordash.html", {'all_items': all_items,'info':info})
             except ObjectDoesNotExist:
                 go = None
                 try:
