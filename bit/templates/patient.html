@@ -1,10 +1,244 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>Patient</title>
+<meta name="viewport" content="width=device-width,intitial-scale=1">
+
 </head>
+
+
+<style>
+#name{
+  position:relative;
+  left: 330px;
+  top: 105px;
+}
+
+#address{
+  position:relative;
+  left: 330px;
+  top: 55px;
+}
+
+#gender1{
+  position: relative;
+  left: 330px;
+  top:-50px;
+}
+
+#bday{
+  position: relative;
+  top: -80px;
+  left: 330px;
+}
+
+#pnumber{
+  position: relative;
+  left:330px;
+}
+
+
+#username{
+  position:relative;
+  left:330px;
+  top: -105px;
+}
+
+#password{
+  position:relative;
+  left:330px;
+  top: -145px;
+}
+
+body{font-family:Arial,Helvetica,sans-serif;}
+/* Bordered form */
+form {
+  border: 3px solid #f1f1f1;
+}
+
+/* Full-width inputs */
+
+input[type=name]{
+  position: relative;
+  left: 490px;
+  top: 50px;
+  width: 30%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+input[type=address]{
+  position: relative;
+  left: 490px;
+  top: 0px;
+  width: 30%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+
+}
+input[type=phone_number]{
+  position: relative;
+  left: 490px;
+  top: -55px;
+  width: 30%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+
+input[type=uname]{
+  position: relative;
+  left: 490px;
+  top: -160px;
+  width: 30%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+input[type=pword]{
+  position: relative;
+  left: 490px;
+  top: -200px;
+  width: 30%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+/*input[type=radio]{
+  position:relative;
+  left: 520px;
+}  */
+/* Set a style for all buttons */
+button {
+  background-color: #4CAF50;
+  position:relative;
+  top:-140px;
+  left: -60px;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 30%;
+}
+
+/* Add a hover effect for buttons */
+button:hover {
+  opacity: 0.8;
+}
+
+/* Extra style for the cancel button (red) */
+.cancelbtn {
+  width: auto;
+  padding: 10px 18px;
+  background-color: #f44336;
+}
+
+/* Center the avatar image inside this container */
+.imgcontainer {
+  text-align: center;
+  margin: 24px 0 12px 0;
+}
+
+/* Avatar image */
+img.avatar {
+  width: 40%;
+  border-radius: 50%;
+}
+
+/* Add padding to containers */
+.container {
+  padding: 5px;
+}
+
+.gender{
+  position: relative;
+  top: -85px;
+  left: 490px;
+}
+
+.birthday{
+  position: relative;
+  top: -120px;
+  left: 490px;
+}
+
+/* The "Forgot password" text */
+span.psw {
+  float: right;
+  padding-top: 16px;
+}
+
+/* Change styles for span and cancel button on extra small screens */
+@media screen and (max-width: 300px) {
+  span.psw {
+    display: block;
+    float: none;
+  }
+  .cancelbtn {
+    width: 100%;
+  }
+}
+</style>
+
 <body>
-Patient login page
+<h2>Create Account Form</h2>
+ 
+  <div class="imgcontainer">
+    <img src="img_avatar2.png" alt="Avatar" class="avatar">
+  </div>
+
+  <div class="container">
+    <p id="name" ><b>Name</b></p>
+
+    <input type="name" placeholder="Enter Username" name ="patient_name" required>
+
+    <p id=address><b>Address</b></p>
+    <input type="address" placeholder="Enter Address" name="patient_address" required>
+
+
+
+    <p id=pnumber><b>Phone Number</b></p>
+    <input type="phone_number" placeholder="Enter phone number" name="patient_number" required>
+
+    <p id=gender1><b>Gender</b></p>
+
+    <div class="gender">
+      <input type="radio" name="patient_gender" value="M" checked>Male
+      <input type="radio" name="patient_gender" value="F"> Female
+      <input type="radio" name="patient_gender" value="O"> Other
+    </div>
+
+
+    <p id=bday><b>Birthday</b></p>
+
+    <div class="birthday">
+    <input type="date" name="b_date">
+    </div>
+
+    <p id="username" ><b>Username</b></p>
+    <input type="uname" placeholder="Enter Username" name ="patient_username" required>
+
+    <p id="password" ><b>Password</b></p>
+    <input type="pword" placeholder="Enter Password" name ="patient_pass" required>
+
+    <button type="submit">Create Account</button>
+
+  </div>
+
+
 </body>
 </html>
