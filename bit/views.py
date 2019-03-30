@@ -1,7 +1,7 @@
 from django.core.exceptions import ObjectDoesNotExist
 from django.shortcuts import render
+from bit.forms import Loginform, Diseaseform,  Patientform, Doctorform
 from .geo import foo
-from bit.forms import Loginform
 from bit.models import Doctor, Disease, Patient
 from .dp import chart1
 from .dp import chart2
@@ -41,17 +41,48 @@ def login(request):
 
 
 def patient(request):
-    return render(request,"patient.html",{})
+	if request.method == 'POST':
+		form = Patientform(request.POST or None)
+		if form.is_valid():
+			form.save()
+			user = request.session['dname']
+			patientlist = Patient.objects.all()
+			return render(request, "disease.html", {'patientlist':patientlist,'doctor_name': user})
+	return render(request, "patient.html", {})
 
 
 def doctor(request):
-    return render(request,"doctor.html",{})
+	if request.method == 'POST':
+		form = Doctorform(request.POST or None)
+		if form.is_valid():
+			form.save()
+			return render(request, "login.html", {})
+	return render(request,"doctor.html",{})
 
 def patientdash(request):
     return render(request,"patientdash.html",{})
 
 def doctordash(request):
-    return render(request,"doctordash.html",{})
+	if (request.GET.get('mybtn')):
+		user =request.session['dname']
+		print(user)
+		patientlist = Patient.objects.all()
+		return render(request,"disease.html", {'patientlist':patientlist,'doctor_name':user})
+
+
+def disease(request):
+	if request.method == 'POST':
+		patientlist = Patient.objects.all()
+		form = Diseaseform(request.POST or None)
+		if form.is_valid():
+			dname = form.cleaned_data['doctor']
+			form.save()
+			user = request.session['dname']
+			all_items = Doctor.objects.get(doctor_username=user)
+			named=all_items.doctor_name
+			info=Disease.objects.filter(doctor=named)
+			return render(request,"doctordash.html",{'all_items': all_items,'info':info})
+	return render(request,"disease.html",{})
 
 def default_map(request):
     # TODO: move this token to Django settings from an environment variable
