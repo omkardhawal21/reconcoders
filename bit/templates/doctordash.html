@@ -4,7 +4,44 @@
     <meta charset="UTF-8">
     <title>DoctorDash</title>
 </head>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
 <body>
-Doctor Dashboard
+<div class="card" style="width: 18rem;">
+  <div class="card-body">
+    <p id="name1" ><b>Name: {{ all_items.doctor_name }}</b></p>
+      <p id=address1><b>Address:{{ all_items.doctor_address }}</b></p>
+      <p id=pnumber1><b> Phone no.:{{ all_items.doctor_number }}</b></p>
+      <p id=qualification1><b>Qualification :{{ all_items.qualification }}</b></p>
+      <p id=gender2><b>Gender: {{ all_items.doctor_gender }}</b></p>
+      <p id=bday1><b>Birthday: {{ all_items.doctor_bdate }}</b></p>
+      <p id="username1" ><b>Username: {{ all_items.doctor_username }}</b></p>
+  </div>
+</div>
+
+<table class="table table-striped table-dark">
+  <thead>
+    <tr>
+      <th scope="col">date</th>
+      <th scope="col">Patient</th>
+      <th scope="col">Symptoms</th>
+      <th scope="col">Disease</th>
+        <th scope="col">Medicines</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for things in info %}
+                <tr>
+                <th scope="col">{{ things.date }}</th>
+                <th scope="col">{{ things.patient }}</th>
+                <th scope="col">{{ things.symptoms_disease }}</th>
+                    <th scope="col">{{ things.disease_possible }}</th>
+                    <th scope="col">{{ things.medicine }}</th>
+                </tr>
+  {% endfor %}
+
+  </tbody>
+</table>
+
 </body>
 </html>
