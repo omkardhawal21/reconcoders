@@ -2,6 +2,7 @@ from django.contrib import admin
 from django.urls import path,include
 from .import views
 
+
 urlpatterns = [
     path('', views.login, name='login'),
     path('patient/', views.patient, name='patient'),
@@ -9,4 +10,8 @@ urlpatterns = [
     path('patientdash/', views.patientdash, name='patientdash'),
     path('doctordash/', views.doctordash, name='doctordash'),
     path('disease/', views.disease, name='disease'),
+    path('map/', views.default_map, name="default"),
+    path('chart1/', views.home1, name='home'),
+    path('chart2/', views.home2, name='home'),
+    path('chart3/', views.home3, name='home'),
 ]
