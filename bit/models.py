@@ -30,7 +30,8 @@ class Doctor(models.Model):			#model for doctor
 	    return self.doctor_name
 
 class Disease(models.Model):		#model for diseases
-	patient_name = models.CharField(max_length = 200)
+	patient = models.CharField(max_length = 200)
+	doctor = models.CharField(max_length=200)
 	symptoms_disease = models.CharField(max_length=200)
 	disease_possible = models.CharField(max_length = 200)
 	medicine = models.CharField(max_length=200)
