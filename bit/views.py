@@ -1,6 +1,6 @@
 from django.core.exceptions import ObjectDoesNotExist
 from django.shortcuts import render
-from .geo import foo
+from .geo import foo, months
 from bit.forms import Loginform
 from bit.models import Doctor, Disease, Patient
 from .dp import chart1
@@ -59,8 +59,36 @@ def default_map(request):
     # found in the Mapbox account settings and getting started instructions
     # see https://www.mapbox.com/account/ under the "Access tokens" section
     mapbox_access_token = 'pk.my_mapbox_access_token'
-    co=foo()
-    return render(request, 'default.html',{ 'mapbox_access_token': mapbox_access_token,'co':co})
+    # sd is selected disease
+
+    a = Disease.objects.all()
+    n = len(a)
+    s = a[n - 1].date
+    s=str(s)
+    m = int(s[5:7])
+    y = int(s[:4])
+    add =[]
+    dis=[]
+    for i in range(len(a)):
+        dis.append(a[i].disease_possible)
+    if(request.method=='POST'):
+        for i in a:
+            #s1=a.date
+            m1 = int(s[5:7])
+            y1 = int(s[:4])
+            sd=request.POST.get('p')
+            print(sd)
+            if  y==y1:
+                if m==m1:
+                    if sd==i.disease_possible:
+                        doc=i.doctor
+                        f=Doctor.objects.filter(doctor_name=doc)
+                        if f[0].doctor_address not in add:
+                            add.append(f[0].doctor_address)
+        co=foo(add)
+        return render(request, 'default.html',{ 'mapbox_access_token': mapbox_access_token,'co':co,'dis':dis})
+    return render(request, 'default.html', {'mapbox_access_token': mapbox_access_token, 'co': co,'dis':dis})
+
 
 def home1(request):
     chart1()
@@ -75,11 +103,11 @@ def home1(request):
 
 
 def home2(request):
-	c,d=chart2()
-	return render(request,'index2.html',{'c':c,'d':d})
+    c,d=chart2()
+    return render(request,'index2.html',{'c':c,'d':d})
 
 
 def home3(request):
-	chart3()
-	return render(request,'index3.html',{})
+    chart3()
+    return render(request,'index3.html',{})
 
