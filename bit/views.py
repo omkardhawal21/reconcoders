@@ -96,8 +96,9 @@ def home1(request):
     chart1()
     dis=Disease.objects.all()
     c=request.POST.get('p')
+    print(c)
     z,d=chart1()
-    i=d.index(c)
+    i=d.index(str(c))
     k=z[i]
     return render(request,'index1.html',{'n':k,'d':d})
 
