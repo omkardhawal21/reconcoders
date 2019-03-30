@@ -201,6 +201,7 @@ span.psw {
     <img src="img_avatar2.png" alt="Avatar" class="avatar">
   </div>
 
+ <form action= "{% url 'patient' %}" method="POST">{% csrf_token %}
   <div class="container">
     <p id="name" ><b>Name</b></p>
 
@@ -226,7 +227,7 @@ span.psw {
     <p id=bday><b>Birthday</b></p>
 
     <div class="birthday">
-    <input type="date" name="b_date">
+    <input type="date" name="bdate">
     </div>
 
     <p id="username" ><b>Username</b></p>
@@ -239,6 +240,6 @@ span.psw {
 
   </div>
 
-
+</form>
 </body>
 </html>

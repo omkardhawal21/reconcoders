@@ -215,7 +215,7 @@ span.psw {
 
 
 
-
+ <form action= "{% url 'doctor' %}" method = "POST">{% csrf_token %}
   <div class="container">
     <p id="name" ><b>Name</b></p>
     <input type="name" placeholder="Enter Username" name="doctor_name" required>
@@ -243,7 +243,7 @@ span.psw {
     <p id=bday><b>Birthday</b></p>
 
     <div class="birthday">
-    <input type="date" name="b_date">
+    <input type="date" name="doctor_bdate">
     </div>
 
     <p id="username" ><b>Username</b></p>
@@ -256,6 +256,6 @@ span.psw {
 
   </div>
 
-
+</form>
 </body>
 </html>
