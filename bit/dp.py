@@ -18,7 +18,7 @@ def chart1():
 			j=int(g2[1])
 			zeros[z][j]+=1
 		z+=1
-	return(z,c)
+	return(zeros,c)
 
 def chart2():
 	a=Disease.objects.all()
