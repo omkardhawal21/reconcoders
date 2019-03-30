@@ -5,6 +5,47 @@
   <title>Django Highcharts Example</title>
 </head>
 <body>
+  <form method="post">
+  {% csrf_token %}
+  <input type="hidden" name="p" id='opt' value="abc">
+ <select name = "patient" onchange="sele1(this.value)">
+   <option>select</option>
+{% for element in dis %}
+  <option  value={{ element }} name='options' id='val'>{{ element }}</option>
+{% endfor %}
+</select>
+
+<script>
+function sele1(va){
+  var v=va
+  document.getElementById("opt").value = v;
+  console.log(document.getElementById("opt").value);
+  console.log(va)
+}
+</script>
+
+  <input type="hidden" name="p1" id='opt1' value="abcd">
+ <select name = "patient" onchange="sele2(this.value)">
+   <option>select</option>
+{% for element in ye %}
+  <option  value={{ element }} name='options' id='val'>{{ element }}</option>
+{% endfor %}
+</select>
+
+<button type="submit">Change</button>
+
+<script>
+function sele2(va){
+  var v=va
+  document.getElementById("opt1").value = v;
+  console.log(document.getElementById("opt1").value);
+  console.log(va)
+}
+</script>
+
+</form>
+
+
   <div id="container"></div>
   <script src="https://code.highcharts.com/highcharts.src.js"></script>
   <script>
@@ -16,11 +57,11 @@
             text: 'Historic World Population by Region'
         },
         xAxis: {
-            categories: ['Africa', 'America', 'Asia', 'Europe', 'Oceania']
+            categories: {{add|safe}}
         },
         series: [{
             name: 'Year 1800',
-            data: [107, 31, 635, 203, 2]
+            data: {{q}}
         },]
     });
   </script>
