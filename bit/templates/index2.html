@@ -1,0 +1,30 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Django Highcharts Example</title>
+</head>
+<body>
+  <div id="container"></div>
+  <script src="https://code.highcharts.com/highcharts.src.js"></script>
+
+
+ <script>
+    Highcharts.chart('container', {
+        chart: {
+            type: 'column'
+        },
+        title: {
+            text: 'Diseases VS Population Graph'
+        },
+        xAxis: {
+            categories:{{c|safe}}
+        },
+        series: [{
+            name: 'Year 1800',
+            data: {{d}}
+        },]
+    });
+  </script>
+</body>
+</html>

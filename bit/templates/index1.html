@@ -1,0 +1,50 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Django Highcharts Example</title>
+</head>
+<body>
+<form method="post">
+  {% csrf_token %}
+  <input type="hidden" name="p" id='opt' value="abc">
+ <select name = "patient" onchange="sele(this.value)">
+   <option>select</option>
+{% for element in d %}
+  <option  value={{ element }} name='options' id='val'>{{ element }}</option>
+{% endfor %}
+</select>
+
+<script>
+function sele(va){
+  var v=va
+  document.getElementById("opt").value = v;
+  console.log(document.getElementById("opt").value);
+  console.log(va)
+}
+</script>
+
+<button type="submit">Change</button>
+</form>
+  <div id="container"></div>
+  <script src="https://code.highcharts.com/highcharts.src.js"></script>
+  <script>
+    Highcharts.chart('container', {
+        chart: {
+            type: 'column'
+        },
+        title: {
+            text: 'Historic World Population by Region'
+        },
+        xAxis: {
+            categories: ['Africa', 'America', 'Asia', 'Europe', 'Oceania']
+        },
+        series: [{
+            name: 'Year 1800',
+            data: [107, 31, 635, 203, 2]
+        },]
+    });
+  </script>
+  <p>hello world</p>
+</body>
+</html>
