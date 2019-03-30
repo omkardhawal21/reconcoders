@@ -5,7 +5,6 @@ from .geo import foo
 from bit.models import Doctor, Disease, Patient
 from .dp import chart1
 from .dp import chart2
-from .dp import chart3
 
 
 def login(request):
@@ -96,13 +95,11 @@ def default_map(request):
 def home1(request):
     chart1()
     dis=Disease.objects.all()
-    d=[]
-    print(request.POST.get('p'))
-    for i in range(len(dis)):
-        d.append(dis[i].disease_possible)
-    z=chart1()
-    print('hello')
-    return render(request,'index1.html',{'d':d})
+    c=request.POST.get('p')
+    z,d=chart1()
+    i=d.index(c)
+    k=z[i]
+    return render(request,'index1.html',{'n':k,'d':d})
 
 
 def home2(request):
@@ -111,6 +108,47 @@ def home2(request):
 
 
 def home3(request):
-	chart3()
-	return render(request,'index3.html',{})
+	#medicine selected=j
+	#year selected=b
+	di=Disease.objects.all()
+	dis=[]
+	ye=[]
+	for _ in range(len(di)):
+		dis.append(di[_].medicine)
+	
+	for _ in range(len(di)):
+		s=di[_].date
+		s=str(s)
+		year=int(s[:4])
+		ye.append(year)
+	
+	d={}
+	q=[]
+	if(request.method=='POST'):
+		j=request.POST.get('p')
+		b=int(request.POST.get('p1'))
+		print(j,b)
+		a=Disease.objects.filter(medicine=j)
+		for i in a:
+			s=str(i.date)
+			y=int(s[:4])
+			print(y)
+			print(b)
+			if y==b:
+				print('ghusla')
+				doc=i.doctor
+				print(doc)
+				f=Doctor.objects.filter(doctor_name=doc)
+				add=f[0].doctor_address
+				if add in list(d.keys()):
+					d[add]+=1
+				else:
+					d[add]=1
+		adder=list(d.keys())
+		for i in adder:
+			q.append(d[i])
+		print(adder)
+		print(q)
+		return render(request,'index3.html',{'add':adder,'q':q,'dis':dis,'ye':ye})
+	return render(request,'index3.html',{'dis':dis,'ye':ye})
 

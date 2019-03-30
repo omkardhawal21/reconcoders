@@ -18,7 +18,7 @@ def chart1():
 			j=int(g2[1])
 			zeros[z][j]+=1
 		z+=1
-	return(z)
+	return(z,c)
 
 def chart2():
 	a=Disease.objects.all()
@@ -38,9 +38,3 @@ def chart2():
 	return(c,d)
 
 
-def chart3():
-	a=Disease.objects.all()
-	b=[]
-	for i in range(len(a)):
-		b.append(a[i].disease_possible)
-	print(b)
