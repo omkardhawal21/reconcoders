@@ -121,14 +121,20 @@ def default_map(request):
 
 
 def home1(request):
-    chart1()
-    dis=Disease.objects.all()
-    c=request.POST.get('p')
-    print(c)
+    #chart1()
     z,d=chart1()
-    i=d.index(str(c))
-    k=z[i]
-    return render(request,'index1.html',{'n':k,'d':d})
+    dis=Disease.objects.all()
+    if(request.method=='POST'):
+    	j=request.POST.get('p')
+    	c=request.POST.get('p')
+    	print(c)
+    	z,d=chart1()
+    	print(z)
+    	i=d.index(str(c))
+    	k=z[i]
+    	return render(request,'index1.html',{'n':k,'d':d})
+    return render(request,'index1.html',{'d':d})
+
 
 
 def home2(request):
