@@ -10,7 +10,7 @@ class Patient(models.Model):		#model for patient
 	patient_name = models.CharField(max_length = 200)
 	patient_address = models.CharField(max_length = 200)
 	bdate = models.DateField()
-	patient_number = models.IntegerField(max_length=10)
+	patient_number = models.CharField(max_length=10)
 	patient_gender = models.CharField(max_length=1)
 	patient_username = models.CharField(max_length = 200)
 	patient_pass = models.CharField(max_length = 200)
