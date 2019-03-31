@@ -154,6 +154,7 @@ def home3(request):
     ye=[]
     for _ in range(len(di)):
         dis.append(di[_].medicine)
+    dis=list(set(dis))
 
     for _ in range(len(di)):
         s=di[_].date
@@ -187,6 +188,7 @@ def home3(request):
         for i in adder:
             q.append(d[i])
         print(adder)
+        ye=list(set(ye))
         print(q)
         return render(request,'index3.html',{'add':adder,'q':q,'dis':dis,'ye':ye})
     return render(request,'index3.html',{'dis':dis,'ye':ye})
